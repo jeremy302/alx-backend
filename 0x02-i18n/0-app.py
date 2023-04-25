@@ -4,9 +4,10 @@ from flask import Flask, render_template
 
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def index() -> str:
     ''' index page '''
     return render_template('0-index.html')
