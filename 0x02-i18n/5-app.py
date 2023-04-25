@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 ''' <TODO> add documentation '''
 from typing import Dict
 from flask import Flask, render_template, request, g
