@@ -1,29 +1,28 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 ''' <TODO> add documentation '''
 from flask import Flask, render_template
 from flask_babel import Babel
 
 
 class Config:
-    """Represents a Flask Babel configuration.
-    """
+    ''' config class '''
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
-
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 app = Flask(__name__)
-app.config.from_object(Config)
-app.url_map.strict_slashes = False
+app.config['LANGUAGES'] = (Config.LANGUAGES)
+app.config['BABEL_DEFAULT_LOCALE'] = (Config.BABEL_DEFAULT_LOCALE)
+app.config['BABEL_DEFAULT_TIMEZONE'] = (Config.BABEL_DEFAULT_TIMEZONE)
+
 babel = Babel(app)
 
 
-@app.route('/')
-def get_index() -> str:
-    """The home/index page.
-    """
+@app.route('/', strict_slashes=False)
+def index() -> str:
+    ''' index page '''
     return render_template('1-index.html')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port='5000')
